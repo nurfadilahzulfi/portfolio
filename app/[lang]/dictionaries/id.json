@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Nur Fadilah Zulfi | Software & AI Engineer",
+    "description": "Portofolio Nur Fadilah Zulfi, Software & AI Engineer dan Data Scientist, IT Specialist Staff di Tanimas Group."
+  },
+  "language": {
+    "label": "Ganti bahasa",
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Mode gelap"
+  },
+  "nav": {
+    "menu": "Buka menu",
+    "home": "Beranda",
+    "profile": "Profil",
+    "projects": "Proyek",
+    "email": "Email",
+    "sound": "Suara klik"
+  },
+  "profile": {
+    "metaTitle": "Profil",
+    "metaDescription": "Informasi pribadi, pengalaman, dan latar belakang Nur Fadilah Zulfi.",
+    "eyebrow": "PROFIL",
+    "infoHeading": "Informasi pribadi",
+    "fields": {
+      "position": "Jabatan",
+      "company": "Perusahaan",
+      "email": "Email"
+    },
+    "aboutHeading": "Tentang saya",
+    "experienceHeading": "Pengalaman",
+    "skillsHeading": "Keahlian",
+    "educationHeading": "Pendidikan",
+    "cta": "Lihat proyek saya"
+  },
+  "projects": {
+    "metaTitle": "Proyek",
+    "metaDescription": "Dokumentasi proyek yang pernah ditangani Nur Fadilah Zulfi.",
+    "eyebrow": "PROYEK",
+    "title": "Proyek yang pernah saya tangani",
+    "intro": "Dokumentasi proyek yang pernah saya kerjakan: masalahnya, cara saya menyelesaikannya, dan hasilnya.",
+    "empty": "Dokumentasi proyek sedang disiapkan. Nantikan segera.",
+    "readMore": "Baca dokumentasi",
+    "back": "Semua proyek",
+    "role": "Peran",
+    "year": "Tahun",
+    "tech": "Teknologi",
+    "repo": "Source code",
+    "demo": "Demo"
+  },
+  "about": {
+    "eyebrow": "SIAPA SAYA",
+    "photoAlt": "Meja kerja menghadap laut saat matahari terbenam",
+    "stats": {
+      "position": { "value": "IT Specialist Staff", "label": "di Tanimas Group" },
+      "fields": { "value": "Software", "label": "AI & Data" },
+      "featured": { "value": "AI", "label": "Engineer" },
+      "secondary": { "value": "Data", "label": "Scientist" }
+    },
+    "headline": "Membangun Software dan AI yang Mengubah Data Menjadi Keputusan.",
+    "paragraphs": [
+      "Saat ini saya bekerja sebagai IT Specialist Staff di Tanimas Group. Bidang yang saya tekuni mencakup software engineering, kecerdasan buatan (AI), dan data science.",
+      "Mulai dari membangun aplikasi, melatih model, hingga menganalisis data, saya fokus pada solusi yang praktis, terukur, dan mudah dirawat."
+    ],
+    "role": "Software & AI Engineer | Data Scientist",
+    "ctaQuestion": "Punya proyek atau ide yang ingin diwujudkan bersama?",
+    "ctaButton": "MARI BERKOLABORASI"
+  }
+}

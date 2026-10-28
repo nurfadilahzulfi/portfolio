@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "title": "Nur Fadilah Zulfi | Software & AI Engineer",
+    "description": "Portfolio of Nur Fadilah Zulfi, Software & AI Engineer and Data Scientist, IT Specialist Staff at Tanimas Group."
+  },
+  "language": {
+    "label": "Change language",
+    "id": "Bahasa Indonesia",
+    "en": "English"
+  },
+  "theme": {
+    "label": "Dark mode"
+  },
+  "nav": {
+    "menu": "Open menu",
+    "home": "Home",
+    "profile": "Profile",
+    "projects": "Projects",
+    "email": "Email",
+    "sound": "Click sounds"
+  },
+  "profile": {
+    "metaTitle": "Profile",
+    "metaDescription": "Personal information, experience, and background of Nur Fadilah Zulfi.",
+    "eyebrow": "PROFILE",
+    "infoHeading": "Personal information",
+    "fields": {
+      "position": "Position",
+      "company": "Company",
+      "email": "Email"
+    },
+    "aboutHeading": "About me",
+    "experienceHeading": "Experience",
+    "skillsHeading": "Skills",
+    "educationHeading": "Education",
+    "cta": "View my projects"
+  },
+  "projects": {
+    "metaTitle": "Projects",
+    "metaDescription": "Documentation of projects handled by Nur Fadilah Zulfi.",
+    "eyebrow": "PROJECTS",
+    "title": "Projects I've worked on",
+    "intro": "Documentation of the projects I've handled: the problem, how I approached it, and what came out of it.",
+    "empty": "Project documentation is being prepared. Check back soon.",
+    "readMore": "Read documentation",
+    "back": "All projects",
+    "role": "Role",
+    "year": "Year",
+    "tech": "Tech stack",
+    "repo": "Source code",
+    "demo": "Live demo"
+  },
+  "about": {
+    "eyebrow": "WHO I AM",
+    "photoAlt": "A workspace overlooking the sea at sunset",
+    "stats": {
+      "position": { "value": "IT Specialist Staff", "label": "at Tanimas Group" },
+      "fields": { "value": "Software", "label": "AI & Data" },
+      "featured": { "value": "AI", "label": "Engineer" },
+      "secondary": { "value": "Data", "label": "Scientist" }
+    },
+    "headline": "Building Software and AI That Turn Data into Decisions.",
+    "paragraphs": [
+      "I'm currently an IT Specialist Staff at Tanimas Group. My work spans software engineering, artificial intelligence, and data science.",
+      "From building applications to training models and analyzing data, I focus on solutions that are practical, measurable, and easy to maintain."
+    ],
+    "role": "Software & AI Engineer | Data Scientist",
+    "ctaQuestion": "Have a project or idea you'd like to build together?",
+    "ctaButton": "LET'S COLLABORATE"
+  }
+}
