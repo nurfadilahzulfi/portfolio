@@ -23,6 +23,7 @@
     "metaTitle": "Profil",
     "metaDescription": "Informasi pribadi, pengalaman, dan latar belakang Nur Fadilah Zulfi.",
     "eyebrow": "PROFIL",
+    "photoAlt": "Nur Fadilah Zulfi saat sidang skripsi, mengenakan selempang Politeknik Negeri Lhokseumawe",
     "infoHeading": "Informasi pribadi",
     "fields": {
       "position": "Jabatan",
@@ -48,7 +49,8 @@
     "year": "Tahun",
     "tech": "Teknologi",
     "repo": "Source code",
-    "demo": "Demo"
+    "demo": "Demo",
+    "gallery": "Tangkapan layar"
   },
   "about": {
     "eyebrow": "SIAPA SAYA",

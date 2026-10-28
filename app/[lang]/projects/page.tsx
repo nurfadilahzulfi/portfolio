@@ -63,6 +63,8 @@ export default async function ProjectsPage() {
                             alt=""
                             fill
                             sizes="(min-width: 768px) 50vw, 100vw"
+                            // The first card is usually the largest thing on screen at load.
+                            loading={i === 0 ? "eager" : "lazy"}
                             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                           />
                         </div>
@@ -76,6 +78,9 @@ export default async function ProjectsPage() {
                         {/* The ::after overlay makes the whole card clickable. */}
                         <Link
                           href={`/${locale}/projects/${project.slug}`}
+                          // Loads the whole detail page ahead of the click (its
+                          // route sets instant = false), so opening it feels instant.
+                          prefetch
                           className="after:absolute after:inset-0 after:rounded-2xl focus-visible:outline-none focus-visible:after:outline-2 focus-visible:after:outline-offset-2 focus-visible:after:outline-neutral-900 dark:focus-visible:after:outline-white"
                         >
                           {project.title[locale]}

@@ -11,6 +11,12 @@ import { projects } from "@/content/projects";
 import { localizedAlternates } from "@/lib/i18n";
 import { getDictionary, getLocale } from "../../dictionaries";
 
+// The page reads `slug` from the URL outside <Suspense>, so navigating here
+// waits for the server. That's fine: every project page is prerendered, and the
+// cards on /projects prefetch it. A Suspense skeleton would also break the
+// cover morph from the card.
+export const instant = false;
+
 // Cache Components rejects an empty list, so a placeholder stands in until the
 // first project is added. It matches no project and renders the 404 page.
 export async function generateStaticParams() {
@@ -131,7 +137,7 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
                   src={project.cover}
                   alt=""
                   fill
-                  priority
+                  loading="eager"
                   sizes="(min-width: 768px) 768px, 100vw"
                   className="object-cover"
                 />
@@ -153,6 +159,43 @@ export default async function ProjectPage({ params }: PageProps<"/[lang]/project
               </Reveal>
             ))}
           </div>
+
+          {project.gallery && project.gallery.length > 0 && (
+            <section className="mt-14" aria-labelledby="gallery-heading">
+              <Reveal index={0}>
+                <h2 id="gallery-heading" className="text-xl font-semibold text-gray-900 dark:text-gray-50">
+                  {t.gallery}
+                </h2>
+              </Reveal>
+              <ul className="mt-6 space-y-10">
+                {project.gallery.map((shot, i) => (
+                  <Reveal as="li" index={i} key={shot.src}>
+                    <figure>
+                      {/* Opens the full-size screenshot; small text is hard to read inline. */}
+                      <a
+                        href={shot.src}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group block overflow-hidden rounded-2xl border border-gray-200 bg-white dark:border-white/10 dark:bg-neutral-900"
+                      >
+                        <Image
+                          src={shot.src}
+                          alt={shot.caption[locale]}
+                          width={shot.width}
+                          height={shot.height}
+                          sizes="(min-width: 768px) 768px, 100vw"
+                          className="h-auto w-full transition-transform duration-500 motion-safe:group-hover:scale-[1.02]"
+                        />
+                      </a>
+                      <figcaption className="mt-3 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                        {shot.caption[locale]}
+                      </figcaption>
+                    </figure>
+                  </Reveal>
+                ))}
+              </ul>
+            </section>
+          )}
         </article>
       </main>
     </PageTransition>

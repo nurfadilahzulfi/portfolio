@@ -4,6 +4,10 @@ import { isLocale, localeCookie, localeFromAcceptLanguage, locales } from "@/lib
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Browsers ask for /favicon.ico on their own and there isn't one. Without
+  // this it would reach app/[lang] as a bogus language "favicon.ico".
+  if (pathname === "/favicon.ico") return new NextResponse(null, { status: 404 });
+
   const hasLocale = locales.some(
     (locale) => pathname === `/${locale}` || pathname.startsWith(`/${locale}/`)
   );
@@ -20,5 +24,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next|api|.*\\..*).*)"],
+  matcher: ["/((?!_next|api|.*\\..*).*)", "/favicon.ico"],
 };

@@ -16,8 +16,9 @@ import {
   useTransform,
 } from "motion/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export type DockItem = {
   title: string;
@@ -176,6 +177,15 @@ const FloatingDockDesktop = ({
   position: DockPosition;
 }) => {
   const mouseX = useMotionValue(Infinity);
+  const pathname = usePathname();
+
+  // While a page transition runs the dock is a snapshot and gets no mouse
+  // events, so a mouseleave during it is lost and the icons stay magnified.
+  // Start each page from rest; the next mouse move re-magnifies if needed.
+  useEffect(() => {
+    mouseX.set(Infinity);
+  }, [pathname, mouseX]);
+
   return (
     <motion.div
       onMouseMove={(e) => mouseX.set(e.pageX)}
@@ -187,7 +197,13 @@ const FloatingDockDesktop = ({
       )}
     >
       {items.map((item) => (
-        <IconContainer mouseX={mouseX} key={item.title} item={item} position={position} />
+        <IconContainer
+          mouseX={mouseX}
+          key={item.title}
+          item={item}
+          position={position}
+          pathname={pathname}
+        />
       ))}
     </motion.div>
   );
@@ -197,10 +213,12 @@ function IconContainer({
   mouseX,
   item,
   position,
+  pathname,
 }: {
   mouseX: MotionValue;
   item: DockItem;
   position: DockPosition;
+  pathname: string;
 }) {
   const { title, icon } = item;
   const ref = useRef<HTMLDivElement>(null);
@@ -244,15 +262,18 @@ function IconContainer({
     damping: 12,
   });
 
-  const [hovered, setHovered] = useState(false);
+  // Hover is remembered per page, so navigating clears a tooltip whose
+  // mouseleave was lost during the page transition.
+  const [hoveredOn, setHoveredOn] = useState<string | null>(null);
+  const hovered = hoveredOn === pathname;
 
   return (
     <DockLink item={item}>
       <motion.div
         ref={ref}
         style={{ width, height }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
+        onMouseEnter={() => setHoveredOn(pathname)}
+        onMouseLeave={() => setHoveredOn(null)}
         className="relative flex aspect-square items-center justify-center rounded-full bg-gray-200 dark:bg-neutral-800"
       >
         <AnimatePresence>

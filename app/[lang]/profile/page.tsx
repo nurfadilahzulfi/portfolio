@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Eyebrow } from "@/components/eyebrow";
@@ -57,7 +58,18 @@ export default async function ProfilePage() {
 
           <div className="mt-12 grid gap-8 md:grid-cols-3">
             <Reveal as="aside" index={3} className="md:col-span-1">
-              <section className={`${card} ${cardHover}`} aria-labelledby="info-heading">
+              <section className={`group ${card} ${cardHover}`} aria-labelledby="info-heading">
+                <div className="-mx-2 -mt-2 mb-6 overflow-hidden rounded-xl bg-gray-100 dark:bg-neutral-800">
+                  <Image
+                    src={profile.avatar}
+                    alt={t.photoAlt}
+                    width={480}
+                    height={600}
+                    loading="eager"
+                    sizes="(min-width: 768px) 320px, 100vw"
+                    className="aspect-[4/5] w-full object-cover transition-transform duration-500 motion-safe:group-hover:scale-[1.03]"
+                  />
+                </div>
                 <h2 id="info-heading" className={sectionHeading}>
                   {t.infoHeading}
                 </h2>
@@ -134,14 +146,31 @@ export default async function ProfilePage() {
                           <p className="font-semibold text-gray-900 dark:text-gray-50">{job.position}</p>
                           <p className="text-sm text-gray-600 dark:text-gray-300">{job.company}</p>
                         </div>
-                        <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/15 dark:text-red-300">
-                          {job.period[locale]}
-                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {job.type && (
+                            <span className="rounded-full border border-gray-200 px-3 py-1 text-xs font-semibold text-gray-600 dark:border-white/15 dark:text-gray-300">
+                              {job.type[locale]}
+                            </span>
+                          )}
+                          <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/15 dark:text-red-300">
+                            {job.period[locale]}
+                          </span>
+                        </div>
                       </div>
                       {job.description && (
                         <p className="mt-4 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
                           {job.description[locale]}
                         </p>
+                      )}
+                      {job.highlights && (
+                        <ul className="mt-4 space-y-2 text-sm leading-relaxed text-gray-600 dark:text-gray-300">
+                          {job.highlights.map((highlight) => (
+                            <li key={highlight.en} className="flex gap-3">
+                              <span className="mt-[0.55em] size-1.5 shrink-0 rounded-full bg-red-500" aria-hidden="true" />
+                              {highlight[locale]}
+                            </li>
+                          ))}
+                        </ul>
                       )}
                     </Reveal>
                   ))}
@@ -186,9 +215,19 @@ export default async function ProfilePage() {
                         <div className="flex flex-wrap items-start justify-between gap-2">
                           <div>
                             <p className="font-semibold text-gray-900 dark:text-gray-50">{item.school}</p>
-                            <p className="text-sm text-gray-600 dark:text-gray-300">{item.degree[locale]}</p>
+                            <p className="text-sm text-gray-600 dark:text-gray-300">{item.program[locale]}</p>
                           </div>
-                          <span className="text-sm text-gray-500 dark:text-gray-400">{item.period}</span>
+                          <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-semibold text-red-600 dark:bg-red-500/15 dark:text-red-300">
+                            {item.period}
+                          </span>
+                        </div>
+                        <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm">
+                          <span className="text-gray-600 dark:text-gray-300">{item.degree[locale]}</span>
+                          {item.gpa && (
+                            <span className="rounded-md bg-neutral-900 px-2 py-0.5 text-xs font-semibold text-white dark:bg-white dark:text-neutral-900">
+                              {item.gpa[locale]}
+                            </span>
+                          )}
                         </div>
                       </Reveal>
                     ))}

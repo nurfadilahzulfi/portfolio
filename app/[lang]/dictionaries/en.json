@@ -23,6 +23,7 @@
     "metaTitle": "Profile",
     "metaDescription": "Personal information, experience, and background of Nur Fadilah Zulfi.",
     "eyebrow": "PROFILE",
+    "photoAlt": "Nur Fadilah Zulfi at the thesis defense, wearing a Politeknik Negeri Lhokseumawe sash",
     "infoHeading": "Personal information",
     "fields": {
       "position": "Position",
@@ -48,7 +49,8 @@
     "year": "Year",
     "tech": "Tech stack",
     "repo": "Source code",
-    "demo": "Live demo"
+    "demo": "Live demo",
+    "gallery": "Screenshots"
   },
   "about": {
     "eyebrow": "WHO I AM",
